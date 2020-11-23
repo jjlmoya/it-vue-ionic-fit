@@ -1,6 +1,8 @@
 <template>
     <div>
-        <input v-model="input" type="text" @keyup="search">
+        <div class="jf-search">
+            Título: <input v-model="input" type="text" @keyup="search">
+        </div>
         <table class="jf-table">
             <tr class="jf-table--row">
                 <th class="jf-table--header"
@@ -108,6 +110,12 @@
 </script>
 
 <style lang="scss">
+  .jf-search {
+      display: grid;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 10px;
+  }
   .jf-table {
     width: 100%;
     display: block;
