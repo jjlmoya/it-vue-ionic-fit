@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="jf-search">
-            Título: <input v-model="input" type="text" @keyup="search">
+            Título: <input v-model="input" type="text" @keyup="filterMovies">
         </div>
         <table class="jf-table">
             <tr class="jf-table--row">
@@ -101,9 +101,6 @@
                     .filter(item => item.title.toLowerCase().includes(this.input.toLowerCase()))
                 this.pagination.setItems(filteredMovies)
                 this.moviePage = this.pagination.getCurrentPage()
-            },
-            search () {
-                this.filterMovies()
             },
         },
     }
