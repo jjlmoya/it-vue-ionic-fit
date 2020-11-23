@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="fit">
     <ion-app>
       <ion-vue-router />
     </ion-app>
@@ -8,10 +8,9 @@
 
 <style lang="scss">
 @import './assets/variables.css';
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.fit {
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   color: #2c3e50;
+  background-color:  #2c3e50;
 }
 </style>

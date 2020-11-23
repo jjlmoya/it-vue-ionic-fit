@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Home from './views/Home.vue';
+import Home from './pages/Home.vue';
 import { IonicVueRouter } from '@ionic/vue';
 
 Vue.use(IonicVueRouter);
@@ -10,14 +10,8 @@ export default new IonicVueRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Inicio',
       component: Home,
     },
-    {
-      path: '/about',
-      name: 'about',
-      component: () =>
-        import(/* webpackChunkName: "about" */ './views/About.vue'),
-    },
-  ]
+  ],
 });
