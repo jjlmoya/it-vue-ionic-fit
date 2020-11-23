@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="jf-search">
-            Título: <input v-model="input" type="text" @keyup="filterMovies">
+            Título: <input v-model="inputTitle" type="text" @keyup="filterMoviesTitle">
+            Género: <input v-model="inputGenre" type="text" @keyup="filterMoviesGenre">
         </div>
         <table class="jf-table">
             <tr class="jf-table--row">
@@ -66,7 +67,8 @@
                 sortDir: 'asc',
                 sortBy: 'title',
                 currentPage: this.page,
-                input: '',
+                inputTitle: '',
+                inputGenre: '',
             }
         },
         async created () {
@@ -95,13 +97,21 @@
                 this.currentPage = page;
                 this.renderPage(page);
             },
-            filterMovies() {
-                console.log(this.input.toLowerCase())
+            matchByKey(item, key, input) {
+                return (item[key] || '').toLowerCase().includes((input || '').toLowerCase())
+            },
+            filterMovies(filterBy = "title", input = this.inputTitle) {
                 const filteredMovies = this.fullMovies
-                    .filter(item => item.title.toLowerCase().includes(this.input.toLowerCase()))
+                    .filter(item => this.matchByKey(item, filterBy, input))
                 this.pagination.setItems(filteredMovies)
                 this.moviePage = this.pagination.getCurrentPage()
             },
+            filterMoviesTitle() {
+                this.filterMovies("title", this.inputTitle)
+            },
+             filterMoviesGenre() {
+                this.filterMovies("genre", this.inputGenre)
+            }
         },
     }
 </script>
